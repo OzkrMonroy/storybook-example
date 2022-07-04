@@ -17,6 +17,10 @@ interface Props {
    * This property set if the label will be displayed with uppercase option, by default is false.
    */
   allCaps?: boolean;
+  /**
+   * This property let you to set a custom font color.
+   */
+  fontColor?: string;
 }
 
 export const MyLabel = ({
@@ -24,9 +28,13 @@ export const MyLabel = ({
   size = "normal",
   color = "primary",
   allCaps = false,
+  fontColor,
 }: Props) => {
   return (
-    <span className={`label ${size} text-${color}`}>
+    <span
+      className={`label ${size} text-${color}`}
+      style={fontColor ? { color: `${fontColor}` } : {}}
+    >
       {allCaps ? label.toUpperCase() : label}
     </span>
   );
